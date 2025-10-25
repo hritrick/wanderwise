@@ -1,2 +1,8 @@
-# Dependency directories
+# Dependencies
 node_modules/
+
+# Next.js build output (Vercel builds this)
+.next/
+
+# Vercel configuration files
+.vercel/
