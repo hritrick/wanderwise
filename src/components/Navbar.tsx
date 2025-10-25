@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from 'react';
-import { useTheme } from '../context/ThemeContext';
-import { MoonIcon, SunIcon, MenuIcon } from './Icons';
+import Image from 'next/image'; // Import next/image
+import { useTheme } from '../context/ThemeContext'; // Ensure this path is correct
+import { MoonIcon, SunIcon, MenuIcon } from './Icons'; // Ensure this path is correct
 
 // Define the props the Navbar will accept
 interface NavbarProps {
@@ -33,10 +34,29 @@ export const Navbar = ({
   return (
     <header className="bg-red-700 text-white shadow-lg sticky top-0 z-50">
       <nav className="container mx-auto px-4 sm:px-6 py-2 sm:py-4 flex justify-between items-center">
-        {/* Logo/Title */}
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight cursor-pointer" onClick={handleBackToHome}>
-          Wanderwise
-        </h1>
+
+        {/* --- MODIFIED Logo/Title Section --- */}
+        {/* Wrap in a flex container and make clickable */}
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={handleBackToHome}
+          title="Go to Home" // Add title attribute for better accessibility
+        >
+          {/* Logo Image */}
+          <Image
+            src="/logo1.png" // Path relative to the public folder
+            alt="Wanderwise Logo"
+            width={32} // Set desired width (adjust as needed)
+            height={32} // Set desired height (adjust as needed)
+            className="h-8 w-8 sm:h-9 sm:w-9" // Control size responsively if needed
+          />
+          {/* Text Title */}
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            Wanderwise
+          </h1>
+        </div>
+        {/* --- END MODIFIED Logo/Title Section --- */}
+
 
         {/* Navigation Links & Theme Toggle */}
         <div className="flex items-center gap-2">
