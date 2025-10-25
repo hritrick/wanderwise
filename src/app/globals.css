@@ -1,0 +1,33 @@
+@import "tailwindcss"; /* Imports Tailwind's base, components, and utilities */
+
+@variant dark (.dark &); /* Defines how Tailwind generates dark mode variants */
+
+body {
+  font-family: Arial, Helvetica, sans-serif; /* Sets a default font */
+  /* Do not set background-color or color directly on body here */
+  /* Let page components (HomePage, LoginPage) handle their own backgrounds */
+}
+
+/* --- Autofill Styles --- */
+
+/* Styles for autofilled inputs in DARK mode */
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px theme('colors.gray.700') inset !important; /* Force dark background using box-shadow trick */
+  -webkit-text-fill-color: theme('colors.white') !important; /* Force white text */
+  caret-color: theme('colors.white') !important; /* Make cursor white */
+  transition: background-color 5000s ease-in-out 0s; /* Delay browser style override (optional but common) */
+}
+
+/* Styles for autofilled inputs in LIGHT mode (or default) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px theme('colors.white') inset !important; /* Force white background using box-shadow trick */
+  -webkit-text-fill-color: theme('colors.gray.900') !important; /* Force dark text */
+  caret-color: theme('colors.gray.900') !important; /* Make cursor dark */
+  transition: background-color 5000s ease-in-out 0s; /* Delay browser style override (optional but common) */
+}
